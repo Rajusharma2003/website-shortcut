@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 50px;
+  letter-spacing: 1px;
+  color: #333;
+}
+h1 span {
+  display: inline-block;
+  animation: slideLeft 1.5s forwards;
+  opacity: 0;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  } 
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+
+
+
+/* Linkedin href */
+a {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  transition: 0.2s;
+  animation: slideLeft 1.5s forwards;
+}
+
+a:after {
+  content: "";
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 0%;
+  height: 2px;
+  background: #333;
+  transition: 0.2s;
+ }
+  
+a:hover {
+    opacity: 0.8;
+}    
+a:hover::after {
+  width: 100%; 
+}
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="animation">
+          Animation
+        </h1>
+        <h1 class="animation">
+          Animation
+        </h1>
+        <h1 class="animation">
+          Animation
+        </h1>
+      </div>
+    
+    <!-- Follow me on linkedin for more animation -->
+    <a href="https://www.linkedin.com/in/jean-philippe-belley-01558286/" target="_blank"> 
+      <svg height="5.42mm" viewBox="0 0 18 16" width="5.54mm" xmlns="http://www.w3.org/2000/svg"><path d="m.65 15.36h3.35v-10.36h-3.35zm1.7-15.36a1.77 1.77 0 0 0 -1.9 1.79 1.76 1.76 0 0 0 1.86 1.79 1.77 1.77 0 0 0 1.9-1.79 1.76 1.76 0 0 0 -1.86-1.79zm13.81 9.42v5.94h-3.37v-5.54c0-1.4-.49-2.35-1.71-2.35a1.83 1.83 0 0 0 -1.72 1.26 2.37 2.37 0 0 0 -.12.84v5.79h-3.36s.04-9.36 0-10.36h3.36v1.46a.05.05 0 0 1 0 0 3.35 3.35 0 0 1 3-1.71c2.26 0 3.92 1.48 3.92 4.67z" fill="#333" fill-rule="evenodd" /></svg>
+    </a>
+
+    
+<script>
+   var spanText = function (text) {
+  var string = text.innerText;
+  var spaned = "";
+  for (var i = 0; i < string.length; i++) {
+    if (string.substring(i, i + 1) === " ") spaned += string.substring(i, i + 1);
+    else spaned += "<span>" + string.substring(i, i + 1) + "</span>";
+  }
+  text.innerHTML = spaned;
+};
+
+// Select all h1 elements with class "animation"
+let headlines = document.querySelectorAll("h1.animation");
+
+// Apply spanText to each h1 element
+headlines.forEach((headline) => {
+  spanText(headline);
+});
+
+// Apply animation delay to each letter
+let animations = document.querySelectorAll(".animation");
+
+animations.forEach((animation) => {
+  let letters = animation.querySelectorAll("span");
+  letters.forEach((letter, i) => {
+    letter.style.animationDelay = i * 0.1 + "s";
+  });
+});
+
+</script>
+
+</body>
+
+
+
+</html>
